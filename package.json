@@ -1,0 +1,22 @@
+{
+  "name": "lp-e2e-test",
+  "version": "1.0.0",
+  "description": "Automation framework for lp web applications using Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "cypress open",
+    "cy:headless": "cypress run --headless",
+    "cy:chrome": "cypress run --browser chrome --headless",
+    "cy:headed": "cypress run"
+  },
+  "author": "Nana",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.16.0",
+    "cypress-mailslurp": "^1.7.0"
+  },
+  "dependencies": {
+    "mailslurp-client": "^15.17.2"
+  }
+}
