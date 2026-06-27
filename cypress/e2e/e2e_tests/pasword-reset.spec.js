@@ -45,7 +45,7 @@ describe("Password Reset",()=>{
         login.assertAlertMsg(testData.alertText[1]);
 
         // assert that the email is sent
-           // cy.getOTPFromEmail('26b1b41f-efd1-43a8-b737-9260709c6a58@mailslurp.biz')
+           // cy.getLatestEmailId().then((id) => cy.getOTPFromEmail(id))
 
         
 
@@ -59,7 +59,7 @@ describe("Password Reset",()=>{
         login.elements.emailField().type(testData.email.invalidEmail)
         login.elements.signInBtn().then(($signInBtn)=>{
             if(!$signInBtn.is(':disabled')){
-                wrap($signInBtn).click();
+                cy.wrap($signInBtn).click();
             }
             else{
                 // Assertions
@@ -80,7 +80,7 @@ describe("Password Reset",()=>{
 
     it('TC016 : Entering Non-Existent Email Address for Password Reset',()=>{
         
-        // Test stepsAn email has been sent to 26b1b41f-efd1-43a8-b737-9260709c6a58@mailslurp.biz
+        // Test steps
         login.elements.forgetPassword().click()
         login.elements.emailField().type(testData.email.nonExistentEmail)
         login.elements.signInBtn().click()

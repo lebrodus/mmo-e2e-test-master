@@ -16,6 +16,7 @@ class Login {
         firstName:() => cy.get('input[data-placeholder="First name"]'),
         lastName:() => cy.get('input[data-placeholder="Last name"]'),
         titleTermsPage:() => cy.get('#data-protection--privacy-policy'),
+        termsLink:() => cy.get('[routerlink="/terms"]'),
         signupCheckbox:() => cy.get('.mat-checkbox-inner-container'),
         rememberMe:() => cy.get('input[type="checkbox"]'),
 

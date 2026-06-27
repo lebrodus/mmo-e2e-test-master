@@ -24,25 +24,18 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-// import { MailSlurp } from 'mailslurp-client';
 
-// const mailslurp = new MailSlurp({ apiKey: "***REMOVED***" });
+// MailSlurp is used to read real verification / OTP emails during the flows.
+// The API key is provided at runtime via the CYPRESS_MAILSLURP_API_KEY env var
+// (the cypress-mailslurp plugin reads it automatically) - never hardcode it.
 import 'cypress-mailslurp';
 
-// wait for latest email  with it's id
-// Cypress.Commands.add('getLatestEmailId', () => {
-//   return cy.mailslurp().then((mailslurp) => {
-//     return mailslurp.waitForLatestEmail().then((email) => {
-//       console.log(email.id)
-//       return email.id;
-//     });
-//   });
-// });
-
-
+// Wait for the latest email in the inbox under test and return its id.
+// The inbox id is supplied via Cypress env (see cypress.env.example.json).
 Cypress.Commands.add('getLatestEmailId', () => {
+  const inboxId = Cypress.env('mailslurpInboxId');
   return cy.mailslurp().then((mailslurp) => {
-    return mailslurp.waitForLatestEmail('***REMOVED***').then((email) => {
+    return mailslurp.waitForLatestEmail(inboxId).then((email) => {
       return email.id;
     });
   });
