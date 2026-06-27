@@ -1,0 +1,33 @@
+name: CI
+
+# E2E specs need a live app + a MailSlurp account, so they are not executed in CI.
+# This workflow verifies the framework installs cleanly and that the Cypress
+# binary and configuration are valid - a fast guard against broken dependencies.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify Cypress install
+        run: npx cypress verify
+
+      - name: Validate Cypress configuration
+        run: npx cypress info
