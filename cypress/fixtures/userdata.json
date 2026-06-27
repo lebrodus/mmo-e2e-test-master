@@ -1,0 +1,26 @@
+{
+  "email": {
+    "validEmail1": "REPLACE_WITH_TEST_EMAIL_1@example.com",
+    "validEmail2": "REPLACE_WITH_TEST_EMAIL_2@example.com",
+    "invalidEmail": "not-an-email",
+    "nonExistentEmail": "does-not-exist@example.com"
+  },
+  "password": "REPLACE_WITH_VALID_PASSWORD",
+  "invalidPass": [
+    "Ab1!",
+    "Password!",
+    "password1!",
+    "PASSWORD1!",
+    "Password11"
+  ],
+  "alertText": [
+    "Invalid code",
+    "An email has been sent",
+    "Account does not exist",
+    "Email already exists",
+    "Verification required"
+  ],
+  "firsName": ["Test"],
+  "lastName": ["User"],
+  "termsPageTitle": "Data Protection & Privacy Policy"
+}
